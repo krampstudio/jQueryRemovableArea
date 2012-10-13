@@ -1,0 +1,33 @@
+{
+  "name": "removablearea",
+  "title": "Removablearea",
+  "description": "This plugin enables you to remove any area from a web page",
+  "version": "0.1.0",
+  "homepage": "https://github.com/krampstudio/jQueryRemovableArea",
+  "author": {
+    "name": "Bertrand Chevrier",
+    "email": "chevrier.bertrand@gmail.com",
+    "url": "http://krampstudio.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/krampstudio/jQueryRemovableArea.git"
+  },
+  "bugs": {
+    "url": "https://github.com/krampstudio/jQueryRemovableArea/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/krampstudio/jQueryRemovableArea/blob/master/LICENSE-MIT"
+    },
+    {
+      "type": "GPL",
+      "url": "https://github.com/krampstudio/jQueryRemovableArea/blob/master/LICENSE-GPL"
+    }
+  ],
+  "dependencies": {
+    "jquery": "1.7"
+  },
+  "keywords": []
+}
