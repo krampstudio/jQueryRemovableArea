@@ -4,9 +4,10 @@
 	var RemovableArea = {
         _opts : {
             label       : 'Supprimer',
-            img         : '/imgs/delete.png',
+            img         : 'imgs/delete.png',
             warning     : 'Voulez-vous supprimer cet élément?',
-            hoverClass  : 'half-opac'
+            hoverClass  : 'half-opac',
+			ctrlClass	: 'removable-ctrl'
         },
         _init: function(options){
 			var opts = $.extend(true, {}, RemovableArea._opts, options);
@@ -15,7 +16,7 @@
 				if($elt.css('position') != 'relative'){
                     $elt.css('position', 'relative');
                 }
-                var $ctrl = $("<img class='removable-ctrl' src='"+opts.img+"' alt='"+opts.label+"' title='"+opts.label+"'>");
+                var $ctrl = $("<img class='"+opts.ctrlClass+"' src='"+opts.img+"' alt='"+opts.label+"' title='"+opts.label+"'>");
                 $ctrl.css({
                     	'display'   : 'none',
                     	'position'  : 'absolute',
@@ -31,10 +32,10 @@
                 
                 $elt.append($ctrl)
                 	.mouseover(function(){
-                    	$('.removable-ctrl', $(this)).show();
-                	})
+                    	$('.removable-ctrl', this).show();
+					})
                 	.mouseout(function(){
-                    	$('.removable-ctrl', $(this)).hide();
+                    	$('.removable-ctrl', this).hide();
                 	});
                 $ctrl.click(function(){
                     if(confirm(opts.warning)){
@@ -43,12 +44,12 @@
                     }
                 });
 				$elt.trigger('init.removablearea');
-			}
+			});
 		},
 		destroy : function(){
 			this.each(function() {
 				$('.removable-ctrl', $(this)).remove();
-			}
+			});
 		}
 	};
 
