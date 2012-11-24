@@ -3,55 +3,49 @@
 /*global notDeepEqual:false, strictEqual:false, notStrictEqual:false, raises:false*/
 (function($) {
 
-  /*
-    ======== A Handy Little QUnit Reference ========
-    http://docs.jquery.com/QUnit
-
-    Test methods:
-      expect(numAssertions)
-      stop(increment)
-      start(decrement)
-    Test assertions:
-      ok(value, [message])
-      equal(actual, expected, [message])
-      notEqual(actual, expected, [message])
-      deepEqual(actual, expected, [message])
-      notDeepEqual(actual, expected, [message])
-      strictEqual(actual, expected, [message])
-      notStrictEqual(actual, expected, [message])
-      raises(block, [expected], [message])
-  */
-
-  module('jQuery#awesome', {
+  module('jQuery#removableArea', {
     setup: function() {
-      this.elems = $('#qunit-fixture').children();
+      this.targets = $('#qunit-fixture').children();
     }
   });
 
-  test('is chainable', 1, function() {
-    // Not a bad test to run on collection methods.
-    strictEqual(this.elems.awesome(), this.elems, 'should be chaninable');
-  });
+	test('is plugin loaded in jQuery', 1, function(){
+		ok( (typeof $.fn.removableArea === 'function'), "the plugin should be available from jQuery.fn");
+	});
 
-  test('is awesome', 1, function() {
-    strictEqual(this.elems.awesome().text(), 'awesomeawesomeawesome', 'should be thoroughly awesome');
-  });
+    asyncTest("does the plugin initialize", function(){
+ 		
+		expect(this.targets.length)
 
-  module('jQuery.awesome');
+		this.targets.bind('init.removablearea', function(){
+				strictEqual(1, $('.removable-ctrl', this).length);
+				start();
+			});
+		this.targets.removableArea();
+	});
 
-  test('is awesome', 1, function() {
-    strictEqual($.awesome(), 'awesome', 'should be thoroughly awesome');
-  });
+	asyncTest("does the plugin launch removed event", function(){
 
-  module(':awesome selector', {
-    setup: function() {
-      this.elems = $('#qunit-fixture').children();
-    }
-  });
+        expect(1);
 
-  test('is awesome', 1, function() {
-    // Use deepEqual & .get() when comparing jQuery objects.
-    deepEqual(this.elems.filter(':awesome').get(), this.elems.last().get(), 'knows awesome when it sees it');
-  });
+        this.targets
+			.removableArea({
+				warning: false
+			})
+			.bind('removed.removablearea', function(){
+            	ok( true );   
+				start(); 
+            });
+		$('.removable-ctrl', this.targets.first()).trigger('click');
+    });
+
+	test("does the plugin removes the element", function(){
+		this.targets
+            .removableArea({
+                warning: false
+            });
+		$('.removable-ctrl', this.targets.first()).trigger('click');
+		equal(2, $('#qunit-fixture').children().length);
+	});
 
 }(jQuery));
