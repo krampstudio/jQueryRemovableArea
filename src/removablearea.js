@@ -6,17 +6,19 @@
 			label       : 'Supprimer',
 			img         : 'imgs/delete.png',
 			warning     : 'Voulez-vous supprimer cet élément?',
-			hoverClass  : 'half-opac',
-			ctrlClass	: 'removable-ctrl'
+			hoverClass  : 'half-opac'
 		},
+		_ctrlClass : 'removable-ctrl',
 		_init: function(options){
-			var opts = $.extend(true, {}, RemovableArea._opts, options);
+			var opts = $.extend(true, {}, RemovableArea._opts, options),
+				ctrlClass = RemovableArea._ctrlClass;
+
 			return this.each(function() {
 				var $elt = $(this);
 				if($elt.css('position') != 'relative'){
 					$elt.css('position', 'relative');
 				}
-				var $ctrl = $("<img class='"+opts.ctrlClass+"' src='"+opts.img+"' alt='"+opts.label+"' title='"+opts.label+"'>");
+				var $ctrl = $("<img class='"+ctrlClass+"' src='"+opts.img+"' alt='"+opts.label+"' title='"+opts.label+"'>");
 				$ctrl.css({
 						'display'   : 'none',
 						'position'  : 'absolute',
@@ -32,13 +34,13 @@
 				
 				$elt.append($ctrl)
 					.mouseover(function(){
-						$('.removable-ctrl', this).show();
-					})
+						$('.' + ctrlClass, this).show();
+					}) 
 					.mouseout(function(){
-						$('.removable-ctrl', this).hide();
+						$('.' + ctrlClass, this).hide();
 					});
 				$ctrl.click(function(){
-					if(confirm(opts.warning)){
+					if(opts.warning === false || confirm(opts.warning)){
 						$elt.trigger('removed.removablearea');
 						$elt.remove();
 					}
@@ -48,7 +50,7 @@
 		},
 		destroy : function(){
 			this.each(function() {
-				$('.removable-ctrl', $(this)).remove();
+				$('.' + RemovableArea._ctrlClass, $(this)).remove();
 			});
 		}
 	};
@@ -59,7 +61,7 @@
 				$.error( 'Trying to call a private method ' + method + ' on jQuery.pluginName' );
 			} else {
 				return RemovableArea[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
-			}
+			}	
 		} else if ( typeof method === 'object' || ! method ) {
 			return RemovableArea._init.apply( this, arguments );
 		} else {
