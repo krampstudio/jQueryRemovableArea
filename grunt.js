@@ -5,8 +5,8 @@ module.exports = function(grunt){
             banner: '/**\n'+
                     ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
 					' * <%= pkg.name %> - v<%= pkg.version %> \n' +
-					' * @author <%=pkg.author.name%> <<%=pkg.author.email%>>\n' +
-					' * @license <%= _.pluck(pkg.licenses, "url").join(", ")\n'+
+					' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n' +
+					' * @license <%= pkg.licenses[0].type %>  <<%= pkg.licenses[0].url %>>\n'+
                     ' */'
         },
 		min : {

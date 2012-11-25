@@ -26,7 +26,7 @@
 						'top'       : '5px',
 						'cursor'    : 'pointer'
 					})
-			   		.hover(function(){
+					.hover(function(){
 						$(this).addClass(opts.hoverClass);
 					}, function(){
 						$(this).removeClass(opts.hoverClass);
@@ -40,7 +40,7 @@
 						$('.' + ctrlClass, this).hide();
 					});
 				$ctrl.click(function(){
-					if(opts.warning === false || confirm(opts.warning)){
+					if(opts.warning === false || window.confirm(opts.warning)){
 						$elt.trigger('removed.removablearea');
 						$elt.remove();
 					}
