@@ -1,13 +1,27 @@
 {
-  "name": "jquery-plugin",
-  "version": "0.0.0-ignored",
-  "engines": {
-    "node": ">= 0.6.0"
-  },
-  "scripts": {
-    "test": "grunt qunit"
-  },
-  "devDependencies": {
-    "grunt": "~0.3.14"
-  }
+    "name" : "jQueryRemovableArea",
+    "description"   : "A plugin that enables you to remove a element from the page",
+    "version"       : "0.1.0",
+    "homepage"      : "https://github.com/krampstudio/jQueryRemovableArea",
+    "author": {
+        "name"  : "Bertrand Chevrier",
+        "email" : "chevrier.bertrand@gmail.com",
+        "url"   : "https://github.com/krampstudio"
+    },
+    "licenses": [{
+        "type": "GPL",
+        "url" : "http://www.gnu.org/licenses/gpl-3.0.txt"
+      }
+    ],
+    "repository": {
+        "type" : "git",
+        "url"  : "git://github.com/krampstudio/jQueryRemovableArea"
+    },
+    "dependencies": {
+        "jquery"   : ">=1.7"
+    },
+    "devDependencies": {
+        "grunt" : "0.3.x",
+        "qunit" : "1.9.x"
+    }
 }

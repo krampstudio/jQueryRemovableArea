@@ -1,60 +1,41 @@
-/*global module:false*/
-module.exports = function(grunt) {
-
-  // Project configuration.
-  grunt.initConfig({
-    pkg: '<json:removablearea.jquery.json>',
-    meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
-    },
-    concat: {
-      dist: {
-        src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
-    min: {
-      dist: {
-        src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-        dest: 'dist/<%= pkg.name %>.min.js'
-      }
-    },
-    qunit: {
-      files: ['test/**/*.html']
-    },
-    lint: {
-      files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
-    },
-    watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint qunit'
-    },
-    jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        browser: true
-      },
-      globals: {
-        jQuery: true
-      }
-    },
-    uglify: {}
-  });
-
-  // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
-
+module.exports = function(grunt){
+	grunt.initConfig({
+		pkg: '<json:package.json>',
+        meta: {
+            banner: '/**\n'+
+                    ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
+					' * <%= pkg.name %> - v<%= pkg.version %> \n' +
+					' * @author <%=pkg.author.name%> <<%=pkg.author.email%>>\n' +
+					' * @license <%= _.pluck(pkg.licenses, "url").join(", ")\n'+
+                    ' */'
+        },
+		min : {
+			dist : {
+				src: 'src/removablearea.js',
+				dest: 'jquery.removablearea.min.js'
+			}
+		},
+		concat : {
+			dist : {
+				src : [ '<banner>', 'jquery.removablearea.min.js'],
+				dest: 'jquery.removablearea.min.js'
+			}
+		},
+		qunit : {
+			all : ['test/*.html']
+		},
+		lint : {
+			files : ['src/*.js']
+		},
+		jshint : {
+			options: {
+				browser : true,
+				smarttabs : true
+			},
+			globals: {
+				jQuery : true
+			}
+		}
+	});
+    grunt.registerTask('default', 'lint qunit min concat');
 };
