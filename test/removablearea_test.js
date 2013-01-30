@@ -1,3 +1,12 @@
+/**
+ * @fileoverview QUnit test 
+ * @copyright Bertrand Chevrier 2012
+ * @author Bertrand Chevrier <chevrier.bertrand@gmail.com>
+ * @license GPL
+ * 
+ * @module test/removablearea_test
+ */
+
 /*global QUnit:false, module:false, test:false, asyncTest:false, expect:false*/
 /*global start:false, stop:false ok:false, equal:false, notEqual:false, deepEqual:false*/
 /*global notDeepEqual:false, strictEqual:false, notStrictEqual:false, raises:false*/

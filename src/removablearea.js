@@ -1,6 +1,13 @@
+/**
+ *@param {Object} $ the jQuery context
+ */
 (function($) {
 	"use strict";
 
+	/**
+	 * The RemovableArea widget
+	 * @lends  RemovableArea  
+	 */
 	var RemovableArea = {
 		_opts : {
 			label       : 'Supprimer',
@@ -9,6 +16,12 @@
 			hoverClass  : 'half-opac'
 		},
 		_ctrlClass : 'removable-ctrl',
+
+		/**
+		 * Initialization
+		 * @constructs 
+		 * @param {Object} options the list of options
+		 */
 		_init: function(options){
 			var opts = $.extend(true, {}, RemovableArea._opts, options),
 				ctrlClass = RemovableArea._ctrlClass;

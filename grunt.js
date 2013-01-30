@@ -35,7 +35,14 @@ module.exports = function(grunt){
 			globals: {
 				jQuery : true
 			}
+		},
+		jsdoc : {
+			dist : {
+				src: ['src/*.js', 'test/*.js'], 
+				dest: 'doc'
+			}
 		}
 	});
+	grunt.loadNpmTasks('grunt-jsdoc-plugin');
     grunt.registerTask('default', 'lint qunit min concat');
 };
