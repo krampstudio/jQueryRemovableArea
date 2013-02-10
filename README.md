@@ -5,8 +5,8 @@ This plugin enables you to remove any area from a web page
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/krampstudio/removablearea/master/jquery.removablearea.min.js
-[max]: https://raw.github.com/krampstudio/removablearea/master/src/removablearea.js
+[min]: https://raw.github.com/krampstudio/jQueryRemovableArea/master/jquery.removablearea.min.js
+[max]: https://raw.github.com/krampstudio/jQUeryRemovableArea/master/src/removablearea.js
 
 In your web page:
 
