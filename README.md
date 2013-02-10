@@ -5,17 +5,24 @@ This plugin enables you to remove any area from a web page
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/krampstudio/removablearea/master/dist/removablearea.min.js
-[max]: https://raw.github.com/krampstudio/removablearea/master/dist/removablearea.js
+[min]: https://raw.github.com/krampstudio/removablearea/master/removablearea.min.js
+[max]: https://raw.github.com/krampstudio/removablearea/master/src/removablearea.js
 
 In your web page:
 
 ```html
-<script src="jquery.js"></script>
-<script src="dist/removablearea.min.js"></script>
-<script>
-jQuery(function($) {
-  $.awesome(); // "awesome"
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="removablearea.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('.content').removableArea({
+     label : 'Remove this content',
+     warning : 'Are you sure you want to remove it?',
+  }).on('removed.removablearea', function(){
+     alert($(this).attr('id') + ' removed successfully');
+  });
+
 });
 </script>
 ```
@@ -24,10 +31,16 @@ jQuery(function($) {
 _(Coming soon)_
 
 ## Examples
-_(Coming soon)_
+
+See the `sample` folder content.
+
+## Demo
+
+See the [demo page](http://krampstudio.com/jQueryRemovableArea/index.html).
 
 ## Release History
-_(Nothing yet)_
+
+ - *0.1.0* : initial release
 
 ## License
 Copyright (c) 2012 Bertrand Chevrier  
